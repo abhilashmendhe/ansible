@@ -1,0 +1,2 @@
+control_server: ansiblenode1.example.local
+web_root: /var/www/html

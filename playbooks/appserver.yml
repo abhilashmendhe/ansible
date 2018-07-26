@@ -1,4 +1,8 @@
 - hosts: appserver
+  vars:
+    author_name: Test User
+  vars_files:
+  - vars.yml
   tasks:
   - name: Install elinks on App Servers
     yum: pkg=elinks state=installed update_cache=true
