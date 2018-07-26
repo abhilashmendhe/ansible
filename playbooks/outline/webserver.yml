@@ -5,12 +5,14 @@
   gather_facts: no
   tasks:
   - name: date/time stamp for when the playbook starts 
-    raw: /usr/bin/date > /home/test/plabook_start.log
-  - name: Install the apache web server
-    yum: pkg=httpd state=latest
-  - name: Start the web service
-    service: name=httpd state=restarted
-  - name: verfigy that the web service is running
+    command: /usr/bin/date
+    register: timestamp_start
+  - debug: var=timestamp_start
+  - name: Install Apache Web Server
+    action: yum name=httpd state=installed
+    notify: Restart HTTPD
+  
+  - name: Verify that the web service is running
     command: systemctl status httpd
     register: result
   - debug: var=result  
@@ -19,6 +21,14 @@
   - name: Install client software - elinks
     yum: pkg=elinks state=latest
   - name: log all the packages install on the system
-    raw: yum list installed > /home/test/installed.log
-  - name:  date/time stamp for when the playbook ends
-    raw: /usr/bin/date > /home/test/playbook_end.log
+    command: yum list installed 
+    register: installed_result
+  - debug: var=installed_result
+  - name: date/time stamp for when the playbook ends
+    command: date
+    register: timestamp_ends
+  - debug: var=timestamp_ends
+
+  handlers:
+  - name: Start HTTPD
+    service: name=httpd state=restarted
