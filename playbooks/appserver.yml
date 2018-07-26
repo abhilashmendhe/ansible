@@ -1,0 +1,4 @@
+- hosts: appserver
+  tasks:
+  - name: Install elinks on App Servers
+    yum: pkg=elinks state=installed update_cache=true
