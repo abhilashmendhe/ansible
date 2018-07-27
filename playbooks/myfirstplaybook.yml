@@ -1,5 +1,5 @@
 --- # My first yaml playbook for ansible
-- hosts: apacheweb
+- hosts: redhat
   user: test
   sudo: yes
   connection: ssh 
