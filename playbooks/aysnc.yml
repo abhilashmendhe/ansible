@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: test
+  gather_facts: no
+  connection: ssh 
+  sudo: yes
+  tasks:
+  - name: simulate log running op (15 sec), wait fo up to 10 sec, poll every 5 sec
+  command: /bin/sleep 15
+  aysnc: 10
+  poll: 5

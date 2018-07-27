@@ -1,0 +1,16 @@
+--- # My Second YAML Playbook for Ansible
+- hosts: all
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  vars: 
+    playbook_version: 0.1b
+  vars_files:
+    - conf/copyright.yml
+    - conf/webdefaults.yml
+  tasks: 
+  - name: Simulate long runnning op(10 sec)
+    command: /bin/sleep 10
+    async: 15
+    poll: 4

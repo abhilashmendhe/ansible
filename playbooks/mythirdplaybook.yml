@@ -1,5 +1,5 @@
 --- # My Second YAML Playbook for Ansible
-- hosts: redhat
+- hosts: apacheweb
   user: test
   sudo: yes
   connection: ssh
@@ -9,6 +9,9 @@
   vars_files:
     - conf/copyright.yml
     - conf/webdefaults.yml
+  vars_prompt: 
+  - name: pkg_name
+    prompt: Enter Package
   tasks: 
   - name: Install Apache Web Server
     action: yum name=httpd state=present
@@ -16,7 +19,7 @@
     poll: 3
     notify: Restart HTTPD
   - name: Install the elinks web browser
-    action: yum name={{ pkg_elinks }} state=installed
+    action: yum name={{ pkg_name }} state=installed
   handlers: 
     - name: Restart HTTPD
       action: service name=httpd state=restarted
