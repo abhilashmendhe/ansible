@@ -1,0 +1,3 @@
+- name: Make sure elinks is installed and then log it 
+  raw: yum list installed | grep elinks > /home/test/install.log
+
