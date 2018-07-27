@@ -1,0 +1,8 @@
+--- # From cmd line
+- hosts: '{{ hosts }}'
+  user:  '{{ user }}'
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Install some soft.
+    yum: pkg={{ pkg }} state=latest
