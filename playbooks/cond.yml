@@ -1,0 +1,17 @@
+--- # Conditional statemnet 
+- hosts: appserver
+  user: test
+  sudo: yes
+  connection: ssh
+  vars: 
+    playbook_type: conditionexample
+  vars_files: 
+    - conf/copyright.yml
+    - conf/webdefaults.yml
+  tasks: 
+  - name: Install apache to distributed type 
+    command: apt-get -y install apache2
+    when: ansible_os_family == "Debian"
+  - name: Install Apache appropriate to the distros.
+    command: yum -y install httpd
+    when: ansible_os_family == "RedHat"
