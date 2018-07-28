@@ -1,0 +1,12 @@
+--- # Delegate to func demo
+- hosts: apacheweb
+  user: test
+  connection: ssh
+  sudo: yes
+  tasks: 
+  - name: Run a remote ping on the application server
+    command: ping -c 4 ansiblemaster.example.local > /home/test/ping.out
+    delegate_to: 127.0.0.1
+  - name: Install a pkg
+    yum: pkg=elinks state=latest
+  
