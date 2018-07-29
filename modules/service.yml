@@ -1,0 +1,14 @@
+--- # service mod.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh 
+  gather_facts: yes
+ 
+  tasks: 
+  - name: Install web server
+    action: yum name=httpd state=installed
+  - name: Start the web server
+    service: name=httpd state=started
+  - name: Enable servie
+    service: name=httpd enable=yes
