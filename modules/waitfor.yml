@@ -1,0 +1,13 @@
+--- # Wait for mod.
+- hosts: apacheweb
+  sudo: yes
+  gather_facts: no
+  tasks: 
+  - name: Installing apache tomcat
+    action: yum name=tomcat state=installed
+  - name: Waiting fot port 8080 to listen
+    wait_for: 
+       port: 8080
+       state: started
+  - name: Verifying elinks installaiton
+    action: yum name=elinks state=installed
