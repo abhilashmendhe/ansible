@@ -1,5 +1,5 @@
 --- # Master Playbook for Web Server
-- hosts: apacheweb
+- hosts: apacheweb, debian
   user: test
   sudo: yes
   connection: ssh
