@@ -1,0 +1,13 @@
+--- # fact module
+- hosts: apacheweb
+  user: test
+  connection: ssh
+  gather_facts: no
+  vars: 
+    playbook_version: 0.1
+  tasks: 
+  - name: Local variable display
+    set_fact:
+       singlefact: SOMETHING
+  - debug: msg={{ playbook_version }}
+  - debug: msg={{ singlefact }}
