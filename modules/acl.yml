@@ -1,0 +1,11 @@
+--- # acl mod.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks: 
+  - name: Get acl info.
+    acl: name=/etc/test.acl.txt entity=test etype=user permissions='rw' state=present
+    register: aclinfo
+  - debug: msg={{ aclinfo }}
