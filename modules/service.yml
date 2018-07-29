@@ -11,4 +11,4 @@
   - name: Start the web server
     service: name=httpd state=started
   - name: Enable servie
-    service: name=httpd enable=yes
+    systemd: name=httpd enabled=yes
