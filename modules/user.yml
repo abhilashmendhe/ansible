@@ -1,0 +1,11 @@
+--- # User mod.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  gather_facts: no
+  connection: ssh 
+  tasks: 
+  - name: Add th user called tstapache 
+    user: name=tstapache comment="Test Apache" group=wheel
+  - name: Remove the user tstapache
+    user: name=tstapache state=absent remove=yes
