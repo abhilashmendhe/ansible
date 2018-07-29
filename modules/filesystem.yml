@@ -1,0 +1,9 @@
+--- # filesystem mod.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh 
+  gather_facts: no
+  tasks: 
+  - name: Format the remote data
+    filesystem: fstype=ext4 dev=/dev/xxx
