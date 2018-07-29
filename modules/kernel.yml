@@ -1,0 +1,9 @@
+--- # kernel blacklist mod.
+- hosts: apacheweb
+  user: test 
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks: 
+  - name: blacklist the dummy kernel mod
+    kernel_blacklit: name=dummy state=present
