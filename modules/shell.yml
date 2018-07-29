@@ -1,0 +1,12 @@
+--- # shell mod ex
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks: 
+  - name: Exec a remote command - ls
+    shell: /bin/ls >> lists.log
+    args: 
+      chdir: logs/
+      creates: lists.log
