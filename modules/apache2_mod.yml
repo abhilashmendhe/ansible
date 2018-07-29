@@ -1,0 +1,9 @@
+--- # apache2_module ex.
+- hosts: apacheweb
+  user: test 
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks: 
+  - name: Enable the alias mod in apache2
+    apache2_module: state=present name=alias
