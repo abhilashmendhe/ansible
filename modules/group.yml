@@ -1,0 +1,10 @@
+--- # group mod ex.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Add a new grp called newgrp
+    group: name=newgrp state=present
+
