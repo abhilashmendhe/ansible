@@ -1,0 +1,12 @@
+--- # sebool mod
+- hosts: apacheweb
+  user: test 
+  connection: ssh
+  sudo: yes
+  gather_facts: no
+  tasks: 
+  - name: Install libsemanage
+    action: yum name=libsemanage-python state=installed
+  - name: Change bool for anon. writes on the web server
+    seboolean: name=httpd_anon_write state=yes persistent=yes
+
