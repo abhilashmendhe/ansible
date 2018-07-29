@@ -1,0 +1,9 @@
+--- # raw mod.
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: fine the sys uptime for hosts abofe
+    raw: /usr/bin/uptime >> uptime.log
