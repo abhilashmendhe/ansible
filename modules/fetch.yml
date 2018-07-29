@@ -1,0 +1,9 @@
+--- # fetch mod. fething files from nodes to master control server
+- hosts: apacheweb
+  sudo: yes
+  user: test
+  connection: ssh
+ 
+  tasks: 
+  - name: Copy remote hosts file to control server
+    fetch: src=/etc/hosts dest=/home/test/prefix-{{ ansible_hostname }} flat=yes
